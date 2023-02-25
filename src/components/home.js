@@ -6,7 +6,7 @@ import { HashLink } from "react-router-hash-link";
 const Home = () => {
 
     function alerter() {
-        alert('shop clicked fucker')
+        alert('shop clicked')
     }
 
     useEffect(()=> {

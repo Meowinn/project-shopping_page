@@ -9,7 +9,8 @@ const Header = (props) => {
             {props.homeLink}
             {props.galleryLink}
             {props.shopLink}
-            {props.aboutLink} 
+            {props.aboutLink}
+            {props.cart} 
           </ul>
         </nav>
       </div>

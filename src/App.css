@@ -251,6 +251,53 @@ a:visited:hover {
 
 }
 
-.shopWrapper {
+#cartLink:hover {
+ cursor: pointer;
+ color: yellow;
+}
+
+.shopHead {
   padding-top: 180px;
+}
+
+input[type=number] {
+  width: 30px;
+}
+
+.hideSideBar {
+  visibility: hidden;
+}
+
+#sideBar {
+  padding: 30px 30px;
+  background-color: purple;
+  width: 30vh;
+  
+  position: fixed;
+  height: 100%;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  z-index: 6;
+
+}
+
+.sideBarHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sideBtn {
+  padding: 5px 15px;
+  background-color: rgb(179, 86, 86);
+  font-size: 1.3rem;
+}
+
+.sideBtn:hover {
+  cursor: pointer;
+}
+
+/*  */
+.itemPic {
+  width: 50px;
 }
