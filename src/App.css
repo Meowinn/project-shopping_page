@@ -256,8 +256,14 @@ a:visited:hover {
  color: yellow;
 }
 
+
 .shopHead {
   padding-top: 180px;
+}
+
+.item1 {
+  display: flex;
+  gap: 10px;
 }
 
 input[type=number] {

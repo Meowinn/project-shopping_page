@@ -7,16 +7,17 @@ const Shop = () => {
 
     const [cartArray, setCartArray] = useState([]);
 
-    const [cartImg, setCartImg] = useState([
-        <img className="itemPic" src= {require("../imgs/item1Sample.jpg")}></img>,
-        <img className="itemPic" src= {require("../imgs/item2Sample.jpg")}></img>
-    ]);
-    
-    
+    const [price, setPrice] = useState(10);
 
-    // merge data-value and images to a single array then pass through the fn?
-    // if statement in add to cart for adding images?
+    
+    // merge data-value and images to a single array then pass through the fn? -success-
+    // if statement in add to cart for adding images? -success-
     function addToCart(event) {
+
+        const cartDiv = [
+            <div><img className="itemPic" src= {require("../imgs/item1Sample.jpg")}></img>{event.target.parentElement.getAttribute('data-value')}</div>,
+            <div><img className="itemPic" src= {require("../imgs/item2Sample.jpg")}></img>{event.target.parentElement.getAttribute('data-value')}</div>
+        ]
 
         // let itemValue = <div> {cartImg[0]} {event.target.parentElement.getAttribute('data-value')} </div>;
         let itemValue = "";
@@ -24,13 +25,14 @@ const Shop = () => {
         if (event.target.parentElement.getAttribute('data-value') == "item 1 Value") {
             alert("item 1 matches")
 
-            itemValue = <div> {cartImg[0]} {event.target.parentElement.getAttribute('data-value')} </div>;
+            itemValue = cartDiv[0];
+            
         }
 
         if (event.target.parentElement.getAttribute('data-value') == "item 2 Value") {
             alert("item 2 matches")
 
-            itemValue = <div> {cartImg[1]} {event.target.parentElement.getAttribute('data-value')} </div>;
+            itemValue = cartDiv[1];
         }
         
         let itemQuantity = Number(event.target.previousElementSibling.value);
@@ -51,14 +53,23 @@ const Shop = () => {
     function showSideBar() {
         document.querySelector('#sideBar').classList.remove('hideSideBar');
 
-    }
+    };
 
     function hideSideBar() {
         document.querySelector('#sideBar').classList.add('hideSideBar');
+    };
+
+    function setPriceF() {
+        setPrice (
+            Number(document.querySelector('#input1').value)*10,
+        )
+
+        
     }
 
-    console.log(cartArray);
+    // console.log(cartArray);
 
+    console.log(price)
     return(
         <div id="shopWrapper">
             <Header homeLink = 
@@ -75,14 +86,12 @@ const Shop = () => {
             <br/>
 
             <div >
-                <div data-value= "item 1 Value">Item 1 <input id="input1" type="number" defaultValue="1" min="1" max="99"></input> <button type="button" onClick={addToCart}>Add to Cart</button></div>
+                <div className="item1" data-value= "item 1 Value"><div>Item 1</div> <div>price: ${price}</div> <input id="input1" type="number" defaultValue="1" min="1" max="99" onChange={setPriceF}></input><button type="button" onClick={addToCart}>Add to Cart</button></div>
                 
             </div>
             <br/>
             <div >
                 <div data-value="item 2 Value">Item 2 <input id="input2"  defaultValue="1" type="number" min="1" max="99"></input> <button type="button" onClick={addToCart}>Add to Cart2</button></div>
-                
-            {cartImg}
 
             </div>
             
@@ -94,11 +103,7 @@ const Shop = () => {
 
                 <div id="cartPageList">
                     <ul>
-                    {cartArray.map((item, index) => 
-                    <li key={index}>
-                        {/* <img className="itemPic" src= {require("../imgs/item1Sample.jpg")}></img> */}
-                        
-                        {item}</li>)}
+                    {cartArray.map((item, index) => <li key={index}> {item}</li>)}
                 
                     </ul>
                 </div>
