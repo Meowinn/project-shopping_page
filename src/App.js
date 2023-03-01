@@ -7,9 +7,9 @@ import Shop from './components/shop';
 const App = () => {
   return (
     <div id="App">
-      <BrowserRouter basename='/home-page'>
+      <BrowserRouter basename='/top-shopping_page'>
       <Routes>
-        <Route exact path='/home-page' element={<Home />}></Route>
+        <Route exact path='/top-shopping_page' element={<Home />}></Route>
         <Route path="/shop" element={<Shop />}></Route>
       </Routes>
       </BrowserRouter>
