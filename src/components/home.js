@@ -5,10 +5,6 @@ import { HashLink } from "react-router-hash-link";
 
 const Home = () => {
 
-    function alerter() {
-        alert('shop clicked')
-    }
-
     useEffect(()=> {
 
         
@@ -104,8 +100,8 @@ const Home = () => {
 const LandingComp = () => {
     return (
         <div id="landingText">
-                    <div className="homeTitle">Art shop</div>
-                    <div className="para"><p>We are professional artists with a huge passion and love for art, we will provide you your dream art for a spectacular price and awesome deals!</p> </div>
+                    <div className="homeTitle">Art of replication</div>
+                    <div className="para"><p>Replica District elevates the practice of reproducing the works of history's greatest painters. We were born from a passion to share our love of classic paintings with art enthusiasts.</p> </div>
                     <div><button id="startBtn" type="button">Get Started</button></div>
                 </div>
     )
@@ -116,7 +112,9 @@ const AboutUs = () => {
         <div id="aboutWrapper">
                 <div className="about">About Us</div>
                 <div className="aboutContainer">
-                    <div className="aboutP">PinoyArt makes finding artworks that you love easy and fun! An Artwork that looks amazing in your home or office is just a few clicks away. Now after handling so many pieces, we have achieved a relative success. We are determined to expand our venture to more places.</div>
+                    <div className="aboutP">Founded in Manila, we create classic artworks that you love! All our artist's paints your favorite masterpieces by hand and delivers them to your home. These are artworks that definitely looks amazing in your home or office and is just a few clicks away.
+                    </div>
+                    
                     <div><img className="aboutImage" src={require("../imgs/artSell.jpg")}></img></div>
                 </div>
 

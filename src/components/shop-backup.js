@@ -62,10 +62,6 @@ const Shop = () => {
         if(e.target.value == 0) {
             e.target.parentElement.parentElement.remove();
         }
-
-        else if (e.target.value > 99) {
-            e.target.value = 99;
-        }
         // console.log(priceDiv)
 
         priceDiv.innerText = '$' + priceValue * quantity;
@@ -127,11 +123,6 @@ const Shop = () => {
     };
     function hideSideBar() {
         document.querySelector('#sideBar').classList.add('hideSideBar');
-
-
-
-
-
     };
 
 
@@ -148,74 +139,56 @@ const Shop = () => {
             }
             cart = {<div id="cartLink" onClick={showSideBar}> <span id="cartLogo">🛒</span>{numOfCart}</div>}/>
 
-            <div id="shopContainer" className="shopHead">
+            <div className="shopHead">I'm from the shop page fool!</div>
+            <br></br>
+
+            <div id="shopContainer">
                 
                 <div>
                     <div className="shopItems">
                         
+                           
                             <div><img className="shopImgs" src= {require("../imgs/item1Sample.jpg")}></img></div>
                         
-                        <div id="shopInfoWrapper">
-                            <div className="itemTitle">Starry Night</div>
+                        <div>
+                            <div className="itemTitle">First Item</div>
                             <div className="itemDescrip">High-quality replica of The Starry Night by the Dutch post-impressionist painter Vincent van Gogh.</div>
                             <div className="bottomDescrip">
-                                <div className="itemPrice" data-value = '10' >$10</div>
-                                <button className="addCartBtn sample" type="button" onClick={addToCart}> Add To Cart</button>
-                            </div>
+                            <div className="itemPrice" data-value = '10' >$10</div>
+                            <button className="addCartBtn sample" type="button" onClick={addToCart}> Add To Cart</button>
+                        </div>
                         </div>
                         
                     </div>
-                    
                     <div className="shopItems">
 
-                        <div id="shopInfoWrapper">
-                            <div className="itemTitle">Irises</div>
-                            <div className="itemDescrip">Irises is yet again, another painting by the Dutch artist Vincent van Gogh.</div>
+                        <div><img className="shopImgs" src= {require("../imgs/item2Sample.jpg")}></img></div>
+                  
+                        <div>
+                            <div className="itemTitle">Second Item</div>
+                            <div className="itemDescrip">High-quality replica of The Starry Night by the Dutch post-impressionist painter Vincent van Gogh.</div>
                             <div className="bottomDescrip">
                                 <div className="itemPrice" data-value = '25'>$25</div>
                                 <button className="addCartBtn" type="button" onClick={addToCart}> Add To Cart</button>
                         </div>
                         </div>
-                        <div><img className="shopImgs" src= {require("../imgs/item2Sample.jpg")}></img></div>
                     </div>
 
                     <div className="shopItems">
-                    
+                    <div className="itemTitle">Third Item</div>
                         <div><img className="shopImgs" src= {require("../imgs/item3Sample.jpg")}></img></div>
-                        
-                        <div id="shopInfoWrapper">
-                            <div className="itemTitle">Rosy-Fingered Dawn at Louse Point</div>
-                            <div className="itemDescrip">The title Rosy-Fingered Dawn at Louse Point refers to one of Willem de Kooning's favourite places in Long Island.</div>
-                            <div className="bottomDescrip">
-                                <div className="itemPrice" data-value = '30'>$30</div>
-                                <button className="addCartBtn" type="button" onClick={addToCart}> Add To Cart</button>
-                            </div>
+                        <div className="bottomDescrip">
+                            <div className="itemPrice" data-value = '30'>$30</div>
+                            <button className="addCartBtn" type="button" onClick={addToCart}> Add To Cart</button>
                         </div>
-                    </div>
-
-                    <div className="shopItems">
-
-                        <div id="shopInfoWrapper">
-                            <div className="itemTitle">Branches with Almond Blossom</div>
-                            <div className="itemDescrip">Branches with Almond Blossom is another van Gogh painted in 1890.</div>
-                            <div className="bottomDescrip">
-                                <div className="itemPrice" data-value = '50'>$50</div>
-                                <button className="addCartBtn" type="button" onClick={addToCart}> Add To Cart</button>
-                        </div>
-                        </div>
-                        <div><img className="shopImgs" src= {require("../imgs/item4Sample.jpg")}></img></div>
-                    </div>
-
-            
-                    <div className="endShop"></div>
+                    </div>    
+                                <div>end shop container</div>
                 </div>
 
 
             </div>
 
-            {/* hideSideBar */}
-
-            <div id="sideBar" className="animated fadeInRight ">
+            <div id="sideBar" className="hideSideBar">
                     <div className="sideBarHeader">
                         <div className="cartTitle">YOUR CART</div>
                         <button className="sideBtn" onClick={hideSideBar}>X</button>
