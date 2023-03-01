@@ -12,9 +12,9 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 30px;
-  /* background-image: url(./imgs/header.png);
-  background-size: cover; */
-  background-color: rgb(53, 35, 53);
+  background-image: url('./imgs/bannerFin.jpg');
+  background-size: cover;
+  /* background-color: rgb(53, 35, 53); */
   border-bottom: 3px solid rgb(202, 168, 14);
   z-index: 5;
 }
@@ -132,7 +132,7 @@ a:visited:hover {
   font-family: Courier New;
   color: #ffffff;
   font-size: 20px;
-  background: #551d8a;
+  background: #3a145e;
   padding: 13px 30px 13px 30px;
   text-decoration: none;
   border: none;
@@ -146,7 +146,10 @@ a:visited:hover {
 }
 
 #aboutWrapper {
-  background-color: rgb(53, 35, 53);
+  /* background-color: rgb(37, 1, 58); */
+  background: url("../src/imgs/purple1.jpg") no-repeat center center;  
+  background-size: cover;
+  
 }
 
 .about {
@@ -210,7 +213,9 @@ a:visited:hover {
 
 
 #galleryWrapper {
-  background-color: rgb(94, 69, 94);
+  /* background-color: rgb(94, 69, 94); */
+  background: url("../src/imgs/purple2.jpg") no-repeat center center fixed;  
+  background-size: cover;
 }
 
 .gallery {
@@ -262,9 +267,13 @@ a:visited:hover {
 }
 
 #shopWrapper {
-  background-color: rgb(53, 35, 53);
+  /* background-color: rgb(53, 35, 53); */
+  background: url("../src/imgs/purple3.jpg") no-repeat center center fixed;  
+  background-size: cover;
   color: white;
 }
+
+/* image from https://www.freepik.com/free-vector/coloured-polygonal-background-design_913217.htm#page=3&query=purple%20pattern%20background&position=18&from_view=keyword&track=ais" Image by davidzydd on Freepik */
 
 #shopContainer {
     display: flex;
@@ -283,7 +292,8 @@ a:visited:hover {
 }
 
 #cartLogo {
-  font-size: 2rem;
+  /* font-size: 2rem; */
+  font-weight: 800;
 }
 
 input[type=number] {
@@ -418,7 +428,7 @@ input[type=number] {
   font-family: Courier New;
   color: #ffffff;
   font-size: 20px;
-  background: #4c0094;
+  background: #ad8111;
   padding: 13px 30px 13px 30px;
   text-decoration: none;
   border: none;
@@ -426,7 +436,7 @@ input[type=number] {
 
 .addCartBtn:hover {
   cursor: pointer;
-  background: #dea516;
+  background: rgb(228, 156, 2);
   text-decoration: none;
 }
 
@@ -529,48 +539,7 @@ input[type=number] {
   /* width: 500px; */
 }
 
-/* transition effect */
-
-.animated {
-  background-repeat: no-repeat;
-  background-position: left top;
-  padding-top:95px;
-  margin-bottom:60px;
-  -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+.checkOutBtn:hover {
+  cursor: pointer;
+  background-color: rgb(228, 156, 2);
 }
-
-@-webkit-keyframes fadeInRight {
-  0% {
-     opacity: 0;
-     -webkit-transform: translateX(20px);
-  }
-  100% {
-     opacity: 1;
-     -webkit-transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  0% {
-     opacity: 0;
-     transform: translateX(200px);
-  }
-  100% {
-     opacity: 1;
-     transform: translateX(0);
-  }
-}
-
-.fadeInRight {
-  -webkit-animation-name: fadeInRight;
-  animation-name: fadeInRight;
-}
-
-/* fade out */
-
-
-
-/*  */

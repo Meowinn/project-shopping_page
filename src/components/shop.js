@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
-import { Route } from "react-router-dom";
 import Header from "./header";
 import { Link } from "react-router-dom";
+import 'animate.css';
 
 const Shop = () => {
 
@@ -27,7 +27,6 @@ const Shop = () => {
         let price = shopItem.getElementsByClassName('itemPrice')[0].innerText;
         let imageSrc = shopItem.getElementsByClassName('shopImgs')[0].src;
         let priceValue = shopItem.getElementsByClassName('itemPrice')[0].getAttribute('data-value');
-        console.log(title, price, imageSrc)
         
         let itemNames = document.querySelectorAll('.itemListName');
         for( let i = 0; i < itemNames.length; i++) {
@@ -42,8 +41,6 @@ const Shop = () => {
         addItemToCart(title, price, imageSrc, priceValue);
         updateTotal();
         updateNumCart();
-
-        // console.log(cartList)
     };
 
     function addItemToCart(title, price, imageSrc, priceValue) {
@@ -55,9 +52,7 @@ const Shop = () => {
     function setPrice(e) {
         let priceDiv = e.target.parentElement.previousElementSibling.previousElementSibling;
         let priceValue = Number(e.target.parentElement.previousElementSibling.innerText);
-        // let priceValue = Number(price.replace('$', ''));
         let quantity = e.target.value;
-        // let basePrice = Number(allPrice.innerText.replace('$', ''));
 
         if(e.target.value == 0) {
             e.target.parentElement.parentElement.remove();
@@ -66,18 +61,15 @@ const Shop = () => {
         else if (e.target.value > 99) {
             e.target.value = 99;
         }
-        // console.log(priceDiv)
 
         priceDiv.innerText = '$' + priceValue * quantity;
         updateTotal();
         updateNumCart();
 
         if(document.querySelector('#itemsWrapper').contains(document.querySelector('#cartList')) == false) {
-            // alert('empty cart!')
             document.querySelector('#emptyDiv').classList.remove('hideSideBar');
             return
         }
-
     };
 
     function updateTotal(num) {
@@ -118,22 +110,21 @@ const Shop = () => {
     };
 
     function showSideBar() {
+        let emptyDivClass = document.querySelector('#emptyDiv').classList;
+        let barDivClass = document.querySelector('#sideBar').classList;
         if (document.querySelector('#itemsWrapper').contains(document.querySelector('#cartList')) == false) {
             // alert('cart is empty');
-            document.querySelector('#emptyDiv').classList.remove('hideSideBar');
+            emptyDivClass.remove('animate__fadeOutRight');
+            emptyDivClass.remove('hideSideBar');
         } else {
-            document.querySelector('#sideBar').classList.remove('hideSideBar');
+            barDivClass.remove('hideSideBar');
+            barDivClass.remove('animate__fadeOutRight');
         }
     };
     function hideSideBar() {
-        document.querySelector('#sideBar').classList.add('hideSideBar');
-
-
-
-
-
+        // document.querySelector('#sideBar').classList.add('hideSideBar');
+        document.querySelector('#sideBar').classList.add('animate__fadeOutRight');
     };
-
 
     // console.log(cartList)
 
@@ -146,10 +137,9 @@ const Shop = () => {
                     <li id="shopBtn" className='navList'>Shop</li>
                 </Link>
             }
-            cart = {<div id="cartLink" onClick={showSideBar}> <span id="cartLogo">🛒</span>{numOfCart}</div>}/>
+            cart = {<div id="cartLink" onClick={showSideBar}> <span id="cartLogo">🛒 {numOfCart}</span> </div>}/>
 
             <div id="shopContainer" className="shopHead">
-                
                 <div>
                     <div className="shopItems">
                         
@@ -213,9 +203,7 @@ const Shop = () => {
 
             </div>
 
-            {/* hideSideBar */}
-
-            <div id="sideBar" className="animated fadeInRight ">
+            <div id="sideBar" className="animate__animated animate__fadeInRight hideSideBar">
                     <div className="sideBarHeader">
                         <div className="cartTitle">YOUR CART</div>
                         <button className="sideBtn" onClick={hideSideBar}>X</button>
@@ -245,8 +233,6 @@ const Shop = () => {
                 </div>
 
                 <EmptyCart />
-
-
         </div>
     )
 };
@@ -254,17 +240,15 @@ const Shop = () => {
 const EmptyCart = () => {
 
     const closeEmptyCart = () => {
-        document.querySelector('#emptyDiv').classList.add('hideSideBar');
+        document.querySelector('#emptyDiv').classList.add('animate__fadeOutRight');
         document.querySelector('#sideBar').classList.add('hideSideBar');
     }
 
     return (
-        <div id="emptyDiv" className="hideSideBar">
+        <div id="emptyDiv" className="animate__animated animate__fadeInRight hideSideBar">
             <div className="emptyBtnWrapper"><button type="button" className="emptyBtn" onClick={closeEmptyCart}>X</button></div>
             <div className="emptyDivHeader">Your Cart is Empty!</div>
             <div id='emptyImgContainer'><img className="emptyImage" src={require("../imgs/empty.png")}></img></div>
-               
-           
         </div>
     )
 }

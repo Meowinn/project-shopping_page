@@ -102,7 +102,7 @@ const LandingComp = () => {
         <div id="landingText">
                     <div className="homeTitle">Art of replication</div>
                     <div className="para"><p>Replica District elevates the practice of reproducing the works of history's greatest painters. We were born from a passion to share our love of classic paintings with art enthusiasts.</p> </div>
-                    <div><button id="startBtn" type="button">Get Started</button></div>
+                    <div><Link smooth="true" to="/shop"><button id="startBtn" type="button">Explore Now</button></Link></div>
                 </div>
     )
 };
