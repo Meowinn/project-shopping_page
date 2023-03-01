@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import 'animate.css';
 
 const Shop = () => {
-
-    
-    // const [cartAppend, setCartAppend] = useState(<NewCartRow />);
-
     const [cartList, setCartList] = useState([]);
     const [cartTotal, setCartTotal] = useState([0])
 
@@ -53,6 +49,7 @@ const Shop = () => {
         let priceDiv = e.target.parentElement.previousElementSibling.previousElementSibling;
         let priceValue = Number(e.target.parentElement.previousElementSibling.innerText);
         let quantity = e.target.value;
+        let subTotal = priceValue * quantity;
 
         if(e.target.value == 0) {
             e.target.parentElement.parentElement.remove();
@@ -61,8 +58,8 @@ const Shop = () => {
         else if (e.target.value > 99) {
             e.target.value = 99;
         }
-
-        priceDiv.innerText = '$' + priceValue * quantity;
+        subTotal = Math.round(subTotal * 100) / 100;
+        priceDiv.innerText = '$' + subTotal;
         updateTotal();
         updateNumCart();
 
@@ -72,7 +69,7 @@ const Shop = () => {
         }
     };
 
-    function updateTotal(num) {
+    function updateTotal() {
         let priceArray = [];
         let cartPrices = document.querySelectorAll('.listPrice');
 
@@ -80,10 +77,9 @@ const Shop = () => {
             let priceNum = Number(cartPrice.innerText.replace('$', ''));
     
             priceArray.push(priceNum)
-
         }
         let total = priceArray.reduce((arr, current) => arr + current, 0);
-        
+        total = Math.round(total * 100) / 100;
         setCartTotal (
             total
         )
@@ -102,7 +98,7 @@ const Shop = () => {
             
             numArray.push(numQuantity);
         }
-        let totalNumCart = numArray.reduce((accumulator, curr) => accumulator + curr, 0);
+        let totalNumCart = Math.floor(numArray.reduce((accumulator, curr) => accumulator + curr, 0));
 
         setNumOfCart (
             totalNumCart
@@ -113,7 +109,6 @@ const Shop = () => {
         let emptyDivClass = document.querySelector('#emptyDiv').classList;
         let barDivClass = document.querySelector('#sideBar').classList;
         if (document.querySelector('#itemsWrapper').contains(document.querySelector('#cartList')) == false) {
-            // alert('cart is empty');
             emptyDivClass.remove('animate__fadeOutRight');
             emptyDivClass.remove('hideSideBar');
         } else {
@@ -122,11 +117,8 @@ const Shop = () => {
         }
     };
     function hideSideBar() {
-        // document.querySelector('#sideBar').classList.add('hideSideBar');
         document.querySelector('#sideBar').classList.add('animate__fadeOutRight');
     };
-
-    // console.log(cartList)
 
     return(
         <div id="shopWrapper">
@@ -149,11 +141,10 @@ const Shop = () => {
                             <div className="itemTitle">Starry Night</div>
                             <div className="itemDescrip">High-quality replica of The Starry Night by the Dutch post-impressionist painter Vincent van Gogh.</div>
                             <div className="bottomDescrip">
-                                <div className="itemPrice" data-value = '10' >$10</div>
+                                <div className="itemPrice" data-value = '89.99' >$89.99</div>
                                 <button className="addCartBtn sample" type="button" onClick={addToCart}> Add To Cart</button>
                             </div>
                         </div>
-                        
                     </div>
                     
                     <div className="shopItems">
@@ -162,7 +153,7 @@ const Shop = () => {
                             <div className="itemTitle">Irises</div>
                             <div className="itemDescrip">Irises is yet again, another painting by the Dutch artist Vincent van Gogh.</div>
                             <div className="bottomDescrip">
-                                <div className="itemPrice" data-value = '25'>$25</div>
+                                <div className="itemPrice" data-value = '54.99'>$54.99</div>
                                 <button className="addCartBtn" type="button" onClick={addToCart}> Add To Cart</button>
                         </div>
                         </div>
@@ -177,7 +168,7 @@ const Shop = () => {
                             <div className="itemTitle">Rosy-Fingered Dawn at Louse Point</div>
                             <div className="itemDescrip">The title Rosy-Fingered Dawn at Louse Point refers to one of Willem de Kooning's favourite places in Long Island.</div>
                             <div className="bottomDescrip">
-                                <div className="itemPrice" data-value = '30'>$30</div>
+                                <div className="itemPrice" data-value = '69.95'>$69.95</div>
                                 <button className="addCartBtn" type="button" onClick={addToCart}> Add To Cart</button>
                             </div>
                         </div>
@@ -189,7 +180,7 @@ const Shop = () => {
                             <div className="itemTitle">Branches with Almond Blossom</div>
                             <div className="itemDescrip">Branches with Almond Blossom is another van Gogh painted in 1890.</div>
                             <div className="bottomDescrip">
-                                <div className="itemPrice" data-value = '50'>$50</div>
+                                <div className="itemPrice" data-value = '29.99'>$29.99</div>
                                 <button className="addCartBtn" type="button" onClick={addToCart}> Add To Cart</button>
                         </div>
                         </div>
@@ -199,7 +190,6 @@ const Shop = () => {
             
                     <div className="endShop"></div>
                 </div>
-
 
             </div>
 
