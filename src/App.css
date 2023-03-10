@@ -98,12 +98,9 @@ a:visited:hover {
 }
 
 #landingText {
-  top: 200px;
+  top: 150px;
   position: absolute;
-  /* padding-left: 400px; */
-
   padding-left: min(400px, 10%);
-
   padding-top: 180px;
   color: rgb(0, 0, 0);
   opacity: 1;
@@ -111,7 +108,7 @@ a:visited:hover {
 }
 
 .homeTitle {
-  font-size: clamp(2.5rem, 5vw, 5.3rem);
+  font-size: clamp(2.5rem, 5vw, 5rem);
   font-weight: 600;
   color: rgb(255, 255, 255);
   text-shadow: 5px 5px black;
@@ -152,7 +149,6 @@ a:visited:hover {
 }
 
 #aboutWrapper {
-  /* background-color: rgb(37, 1, 58); */
   background: url("../src/imgs/purple1.jpg") no-repeat center center;  
   background-size: cover;
   
@@ -174,15 +170,15 @@ a:visited:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 10px 250px 100px;
+  padding-bottom: 30px;
+  height: 100%;
   gap: 250px;
 }
 
 .aboutP {
   color: white;
   text-align: justify;
-  width: 800px;
-  display: flex;
+  width: 650px;
   font-size: 1.8rem;
 }
 
@@ -227,7 +223,7 @@ a:visited:hover {
   display: flex;
   justify-content: center;
   padding: 60px 30px;
-  gap: 5px;
+  gap: 10px;
   font-size: 1.3rem;
   color: white;
 }
@@ -341,7 +337,7 @@ input[type=number] {
   display: flex;
   justify-content: center;
   padding-top: 120px;
-  font-size: 2.6rem;
+  font-size: 2rem;
 }
 
 .emptyBtnWrapper {
@@ -364,7 +360,7 @@ input[type=number] {
   display: flex;
   justify-content: space-between;
   align-items:flex-start;
-  padding: 15px;
+  padding: 15px 0;
 }
 
 .sideBtn,
@@ -403,7 +399,6 @@ input[type=number] {
 }
 
 .shopImgs {
-  /* position: absolute; */
   width: 500px;
 }
 
@@ -459,33 +454,30 @@ input[type=number] {
 
 .cartRow {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   border-bottom: 2px solid rgb(202, 168, 14);
   margin-bottom: 10px;
-  gap: 100px;
   font-size: 1.2rem;
   font-weight: 600;
-  padding-left: 50px;
-  padding-bottom: 5px;
+  padding: 0 10px 5px 10px;
+}
 
+.cartRow>div:nth-child(2){
+  padding-left: 80px;
 }
 
 .itemListName {
   display: flex;
   align-items: center;
-  gap: 10px;
-  width: 130px;
-  font-size: 1.1rem;
+  gap: 6px;
+  width: 110px;
 }
 
 #cartList {
- display: grid;
- grid-template-columns: 1fr 1fr 1fr;
- justify-items: center;
+ display: flex;
+ justify-content: space-around;
  align-items: center;
- gap: 35px;
- padding: 10px 35px;
- 
+ gap: 45px;
 }
 
 .listPrice {
@@ -493,14 +485,13 @@ input[type=number] {
   font-weight: 600;
   font-size: 1.2rem;
 }
-
-
 .cartListImg {
-  width: 80px;
+  width: 70px;
+  height: 60px;
 }
 
 .quantity {
-  padding: 5px 8px;
+  padding: 5px 3px;
   font-size: 1.1rem;
   border-radius: 5px;
 }
@@ -565,13 +556,20 @@ input[type=number] {
     width: 320px;
   }
 
-  .aboutImage {
-    padding-right: 100px;
+  .aboutP {
+    font-size: 1.3rem;
+  }
+
+  .aboutContainer {
+    gap: 80px;
   }
   
   .cartRow {
-    padding: 0;
     font-size: 0.6rem;
+  }
+
+  .cartRow>div:nth-child(2) {
+    padding-left: 20px;
   }
 
   #cartList {
@@ -579,8 +577,10 @@ input[type=number] {
     gap: 0;
   }
 
+
   .cartListImg {
     width: 20px;
+    height: 20px;
   }
 
   .itemListName {
@@ -594,7 +594,6 @@ input[type=number] {
   }
 
   .quantity {
-    /* padding: 2px 3px; */
     margin-left: 25px;
     font-size: 0.8rem;
   }
