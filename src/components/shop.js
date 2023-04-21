@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Header from "./header";
 import { Link } from "react-router-dom";
 import 'animate.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 const Shop = () => {
     const [cartList, setCartList] = useState([]);
@@ -24,13 +26,13 @@ const Shop = () => {
         let imageSrc = shopItem.getElementsByClassName('shopImgs')[0].src;
         let priceValue = shopItem.getElementsByClassName('itemPrice')[0].getAttribute('data-value');
 
-        let itemNames = document.querySelectorAll('.itemListName');
-        for (let i = 0; i < itemNames.length; i++) {
-            if (itemNames[i].innerText == title) {
-                alert('Item already added!')
-                return
-            }
-        }
+        // let itemNames = document.querySelectorAll('.itemListName');
+        // for (let i = 0; i < itemNames.length; i++) {
+        //     if (itemNames[i].innerText == title) {
+        //         alert('Item already added!')
+        //         return
+        //     }
+        // }
 
         document.querySelector('#emptyDiv').classList.add('hideSideBar');
 
@@ -108,6 +110,7 @@ const Shop = () => {
     function showSideBar() {
         let emptyDivClass = document.querySelector('#emptyDiv').classList;
         let barDivClass = document.querySelector('#sideBar').classList;
+
         if (document.querySelector('#itemsWrapper').contains(document.querySelector('#cartList')) == false) {
             emptyDivClass.remove('animate__fadeOutRight');
             emptyDivClass.remove('hideSideBar');
@@ -123,102 +126,103 @@ const Shop = () => {
     return (
         <div id="shopWrapper">
             <Header homeLink=
-                {<Link to="/"><li className='navList'>Home</li></Link>}
+                {<Link to="/"><li className='nav-link px-3'>Home</li></Link>}
                 shopLink={
                     <Link smooth="true" to="/shop">
-                        <li id="shopBtn" className='navList'>Shop</li>
+                        <li id="shopBtn" className='nav-link active px-3'>Shop</li>
                     </Link>
                 }
-                cart={<div id="cartLink" onClick={showSideBar}> <span id="cartLogo">🛒 {numOfCart}</span> </div>} />
+                cart={<div id="cartLink" className="nav-link pe-3" onClick={showSideBar}> <span id="cartLogo"><FontAwesomeIcon icon={faCartShopping} /> {numOfCart}</span> </div>} />
 
-            <div id="shopContainer" className="shopHead">
-                <div>
-                    <div className="shopItems">
 
-                        <div><img className="shopImgs" src={require("../imgs/item1Sample.jpg")}></img></div>
+            <div id="shopContainer" className="pt-5 ">
+                <div className="container-fluid px-5">
 
-                        <div id="shopInfoWrapper">
-                            <div className="itemTitle">Starry Night</div>
+                    <div className="row pb-5">
+                        <div className="col-lg-6 col-md-12 shopImgWrapper text-end "><img className="shopImgs" src={require("../imgs/item1Sample.jpg")}></img></div>
+                        <div id="shopInfoWrapper" className="col-lg-6 align-self-center fs-6 rightAligned">
+                            <div className="itemTitle py-2 fs-4 fw-bold">Starry Night</div>
                             <div className="itemDescrip">High-quality replica of The Starry Night by the Dutch post-impressionist painter Vincent van Gogh.</div>
-                            <div className="bottomDescrip">
-                                <div className="itemPrice" data-value='89.99' >$89.99</div>
-                                <button className="addCartBtn sample" type="button" onClick={addToCart}> Add To Cart</button>
+                            <div className="row pt-2">
+                                <div className="itemPrice col-lg-3 align-self-center fs-5 fw-bold" data-value='89.99'>$89.99</div>
+                                <button className="addCartBtn col-lg-3 py-2 btn btn-warning" type="button" onClick={addToCart}> Add To Cart</button>
                             </div>
                         </div>
                     </div>
 
-                    <div className="shopItems">
+                    <div className="row pb-5">
+                        <div id="shopInfoWrapper" className="col-lg-6 align-self-center fs-6 text-end leftAligned">
+                            <div className="itemTitle py-2 fs-4 fw-bold">Irises</div>
+                            <div className="itemDescrip ">Irises is yet again, another painting by the Dutch artist Vincent van Gogh.</div>
 
-                        <div id="shopInfoWrapper">
-                            <div className="itemTitle">Irises</div>
-                            <div className="itemDescrip">Irises is yet again, another painting by the Dutch artist Vincent van Gogh.</div>
-                            <div className="bottomDescrip">
-                                <div className="itemPrice" data-value='54.99'>$54.99</div>
-                                <button className="addCartBtn" type="button" onClick={addToCart}> Add To Cart</button>
+                            <div className="row justify-content-end pt-2">
+                                <div className="itemPrice col-lg-3 align-self-center fs-5 fw-bold" data-value='54.99'>$54.99</div>
+                                <button className="addCartBtn col-lg-3 py-2 btn btn-warning" type="button" onClick={addToCart}> Add To Cart</button>
                             </div>
                         </div>
-                        <div><img className="shopImgs" src={require("../imgs/item2Sample.jpg")}></img></div>
+                        <div className="col-lg-6"><img className="shopImgs" src={require("../imgs/item2Sample.jpg")}></img></div>
                     </div>
 
-                    <div className="shopItems">
-
-                        <div><img className="shopImgs" src={require("../imgs/item3Sample.jpg")}></img></div>
-
-                        <div id="shopInfoWrapper">
-                            <div className="itemTitle">Rosy-Fingered Dawn at Louse Point</div>
+                    <div className="row pb-5">
+                        <div className="col-lg-6 shopImgWrapper text-end"><img className="shopImgs" src={require("../imgs/item3Sample.jpg")}></img></div>
+                        <div id="shopInfoWrapper" className="col-lg-6 align-self-center fs-6 rightAligned">
+                            <div className="itemTitle py-2 fs-4 fw-bold">Rosy-Fingered Dawn at Louse Point</div>
                             <div className="itemDescrip">The title Rosy-Fingered Dawn at Louse Point refers to one of Willem de Kooning's favourite places in Long Island.</div>
-                            <div className="bottomDescrip">
-                                <div className="itemPrice" data-value='69.95'>$69.95</div>
-                                <button className="addCartBtn" type="button" onClick={addToCart}> Add To Cart</button>
+                            <div className="row pt-2">
+                                <div className="itemPrice col-lg-3 align-self-center fs-5 fw-bold" data-value='69.95'>$69.95</div>
+                                <button className="addCartBtn col-lg-3 py-2 btn btn-warning" type="button" onClick={addToCart}> Add To Cart</button>
                             </div>
                         </div>
                     </div>
 
-                    <div className="shopItems">
-
-                        <div id="shopInfoWrapper">
-                            <div className="itemTitle">Branches with Almond Blossom</div>
+                    <div className="row pb-5">
+                        <div id="shopInfoWrapper" className="col-lg-6 align-self-center fs-6 text-end leftAligned">
+                            <div className="itemTitle py-2 fs-4 fw-bold">Branches with Almond Blossom</div>
                             <div className="itemDescrip">Branches with Almond Blossom is another van Gogh painted in 1890.</div>
-                            <div className="bottomDescrip">
-                                <div className="itemPrice" data-value='29.99'>$29.99</div>
-                                <button className="addCartBtn" type="button" onClick={addToCart}> Add To Cart</button>
+                            <div className="row justify-content-end pt-2">
+                                <div className="itemPrice col-lg-3 align-self-center fs-5 fw-bold" data-value='29.99'>$29.99</div>
+                                <button className="addCartBtn col-lg-3 py-2 btn btn-warning" type="button" onClick={addToCart}> Add To Cart</button>
                             </div>
                         </div>
-                        <div><img className="shopImgs" src={require("../imgs/item4Sample.jpg")}></img></div>
+                        <div className="col-lg-6"><img className="shopImgs" src={require("../imgs/item4Sample.jpg")}></img></div>
                     </div>
 
 
-                    <div className="endShop"></div>
+
+                    <div className="endShop pb-5"></div>
+
                 </div>
 
             </div>
 
             <div id="sideBar" className="animate__animated animate__fadeInRight hideSideBar">
-                <div className="sideBarHeader">
-                    <div className="cartTitle">YOUR CART</div>
-                    <button className="sideBtn" onClick={hideSideBar}>X</button>
+
+                <div className="sideBarHeader row py-3 align-items-center">
+                    <h5 className="cartTitle col fw-bold">YOUR CART</h5>
+                    <button className="sideBtn col-2 btn btn-danger btn-sm" onClick={hideSideBar}>x</button>
                 </div>
 
-                <div className="cartRow">
-                    <div>Item</div>
-                    <div>Price</div>
-                    <div>Quantity</div>
+                <div className="cartRow row fs-6 fw-bold text-center">
+                    <div className="col-md-4">Item</div>
+                    <div className="col-md-4">Price</div>
+                    <div className="col-md-4">Quantity</div>
                 </div>
 
                 <div id="itemsWrapper">
                     {cartList.map((item, key) =>
-                        <div id="cartList" key={key}>
-                            <div className="itemListName"><div><img className="cartListImg" src={item.imageSrc}></img></div>{item.title}</div>
-                            <div className="listPrice">{item.price}</div>
-                            <div id="priceValue">{item.priceValue}</div>
-                            <div><input className="quantity" type='number' defaultValue="1" min="0" max="99" onChange={setPrice}></input></div>
+                        <div id="cartList" className="row align-items-center text-center py-2 fw-bold" key={key}>
+                            <div className="itemTitle_name col-lg-4">
+                                <div><img className="cartListImg" src={item.imageSrc}></img></div>
+                                {item.title}</div>
+                            <div className="listPrice col-lg-4 ">{item.price}</div>
+                            <div id='priceValue'>{item.priceValue}</div>
+                            <div className="col-lg-4"><input className="quantity" type='number' defaultValue="1" min="0" max="99" onChange={setPrice}></input></div>
                         </div>)}
 
                     <div className="totalWrapper">
-                        <div className="total">Total: <span className="totalPrice">${cartTotal}</span></div>
+                        <div className="total">Total: <span className="fs-5">${cartTotal}</span></div>
                     </div>
-
-                    <div id='checkOut'><button className="checkOutBtn" onClick={checkOut}>Check Out </button></div>
+                    <div className="row"><button className="checkOutBtn col btn btn-warning btn-lg fs-5 fw-bold" onClick={checkOut}>Check Out </button></div>
                 </div>
             </div>
 
@@ -236,9 +240,11 @@ const EmptyCart = () => {
 
     return (
         <div id="emptyDiv" className="animate__animated animate__fadeInRight hideSideBar">
-            <div className="emptyBtnWrapper"><button type="button" className="emptyBtn" onClick={closeEmptyCart}>X</button></div>
-            <div className="emptyDivHeader">Your Cart is Empty!</div>
-            <div id='emptyImgContainer'><img className="emptyImage" src={require("../imgs/empty.png")}></img></div>
+            <div className="text-end"><button type="button" className="btn btn-danger" onClick={closeEmptyCart}>x</button></div>
+            <div className="container-fluid pt-5">
+                <div className="text-center py-3 fs-4 fw-bold">Your Cart is Empty!</div>
+                <div className="text-center align-middle"><img className="w-75" src={require("../imgs/empty.png")}></img></div>
+            </div>
         </div>
     )
 }
